@@ -3,6 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import * as pdfjsLib from "pdfjs-dist";
+
+// pdfjs-dist 5.x requires an explicit worker module URL in the browser.
+// Keep the worker version aligned with the installed pdfjs-dist package.
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
 import {
   ArrowLeft, Download, FileText, MousePointer2, Type, ZoomIn, ZoomOut,
   ChevronLeft, ChevronRight, Trash2, Upload, Info, CheckCircle2
